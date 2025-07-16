@@ -1,26 +1,25 @@
-import { api, HydrateClient } from "@/trpc/server";
-import BuyButton from "./_components/BuyButton";
+import { Suspense } from "react";
+import Product_Page from "./_components/ProductPage";
 
-export default async function Home() {
-  const products = await api.post.getProducts({ limit: 10 });
-
+const ProductSkeleton = () => {
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center gap-12 px-4 py-16">
-          {/* Products */}
-          <div className="w-full max-w-4xl">
-            <h2 className="mb-4 text-center text-3xl font-semibold">
-              Products ( {products?.length} items )
-            </h2>
-            <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-              {products?.map((p) => (
-                <BuyButton key={p.id} p={p} />
-              ))}
-            </ul>
-          </div>
-        </div>
-      </main>
-    </HydrateClient>
+    <li className="flex h-full animate-pulse flex-col items-center rounded-xl p-4 text-center">
+      <div className="h-[320px] w-[320px] rounded bg-black" />
+      <div className="mt-2 h-5 w-24 rounded bg-black" />
+      <div className="mt-1 h-4 w-32 rounded bg-black" />
+      <div className="mt-1 h-5 w-16 rounded bg-black" />
+      <div className="mt-3 h-8 w-24 rounded bg-black" />
+    </li>
+  );
+};
+
+export default function Home() {
+  return (
+    <>
+      <h2 className="mb-4 text-center text-3xl font-semibold">Products</h2>
+      <Suspense fallback={<ProductSkeleton />}>
+        <Product_Page />;
+      </Suspense>
+    </>
   );
 }

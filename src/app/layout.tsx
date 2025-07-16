@@ -5,6 +5,7 @@ import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Create T3 App",

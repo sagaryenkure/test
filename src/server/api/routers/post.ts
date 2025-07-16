@@ -5,8 +5,6 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "@/server/api/trpc";
-import { TRPCError } from "@trpc/server";
-import { useQueryClient } from "@tanstack/react-query";
 import postController from "../controllers/post.controller";
 
 // Type-only Product definition (no Zod)
