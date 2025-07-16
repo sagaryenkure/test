@@ -6,7 +6,6 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 
 const BuyButton = ({ p }: { p: Product }) => {
-  console.log("Rendering BuyButton for product:", p.title);
   return (
     <Suspense fallback={<div className="p-4">Loading...</div>}>
       <li className="flex flex-col items-center rounded-lg bg-white/10 p-4 text-center transition hover:bg-white/20">

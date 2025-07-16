@@ -6,6 +6,8 @@ import {
   publicProcedure,
 } from "@/server/api/trpc";
 import { TRPCError } from "@trpc/server";
+import { useQueryClient } from "@tanstack/react-query";
+import postController from "../controllers/post.controller";
 
 // Type-only Product definition (no Zod)
 export type Product = {
@@ -21,22 +23,15 @@ export type Product = {
   discount: number;
 };
 
-export const postRouter = createTRPCRouter({
-  getProducts: publicProcedure
-    .query(async () => {
-      try {
-        const response = await fetch("https://fakestoreapi.in/api/products?limit=20s");
-        if (!response.ok) {
-         throw new TRPCError({code:"NOT_FOUND"})
-        }
+// Zod schema for Product
+const userLimitSchema = z.object({
+  limit: z.number().optional().default(20),
+});
 
-        const data = await response.json() as { products: Product[] };
-        return data.products  ;
-      } catch (error) {
-        console.error("Failed to fetch products:", error);
-        return [] ;
-      }
-    }),
+
+export const postRouter = createTRPCRouter({
+  getProducts: publicProcedure.input(userLimitSchema)
+    .query(async ({input}) => postController.getProducts(input)),
 
   create: protectedProcedure
     .input(z.object({ name: z.string().min(1) }))

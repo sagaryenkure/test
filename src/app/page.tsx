@@ -2,7 +2,7 @@ import { api, HydrateClient } from "@/trpc/server";
 import BuyButton from "./_components/BuyButton";
 
 export default async function Home() {
-  const products = await api.post.getProducts();
+  const products = await api.post.getProducts({ limit: 10 });
 
   return (
     <HydrateClient>
@@ -11,7 +11,7 @@ export default async function Home() {
           {/* Products */}
           <div className="w-full max-w-4xl">
             <h2 className="mb-4 text-center text-3xl font-semibold">
-              Products
+              Products ( {products?.length} items )
             </h2>
             <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
               {products?.map((p) => (
