@@ -3,6 +3,7 @@ import React from "react";
 import LocaleSwitcherSelect from "./LocaleSwitcherSelect";
 import { routing } from "@/i18n/routing";
 
+// This component allows users to switch between different locales
 const LocalSwitcher = () => {
   const locale: string = useLocale();
   return (
