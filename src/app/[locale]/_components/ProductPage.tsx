@@ -2,8 +2,8 @@ import { api, HydrateClient } from "@/trpc/server";
 import BuyButton from "./BuyButton";
 import { getTranslations } from "next-intl/server";
 
-const wait = (time = 2000) =>
-  new Promise((resolve) => setTimeout(resolve, time));
+// const wait = (time = 2000) =>
+//   new Promise((resolve) => setTimeout(resolve, time));
 
 export default async function Product_Page() {
   const t = await getTranslations("listSection");
