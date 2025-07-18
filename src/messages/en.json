@@ -1,0 +1,12 @@
+{
+    "homePage":{
+        "homeLink": "Home",
+        "blogLink": "Blogs",
+        "title": "Welcome to Our Application",
+        "description": "This is the home page where you can find the latest product."
+    },
+    "listSection": {
+        "title": "List of Products",
+        "description": "Here you can find all the products available in our store."
+    }
+}
