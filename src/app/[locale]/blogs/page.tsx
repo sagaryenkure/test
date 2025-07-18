@@ -1,7 +1,9 @@
-import React from "react";
+import { getTranslations } from "next-intl/server";
 
-const BlogPage = () => {
-  return <div>BlogPage</div>;
+export const BlogPage = async () => {
+  const t = await getTranslations("homePage");
+
+  return <div>{t("blogLink")}</div>;
 };
 
 export default BlogPage;
