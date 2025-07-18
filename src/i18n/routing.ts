@@ -1,3 +1,4 @@
+import { i18nRouting } from "@/constants/i18n";
 import { createNavigation } from "next-intl/navigation";
 import { defineRouting } from "next-intl/routing";
 
@@ -8,10 +9,7 @@ export const routing = defineRouting({
   // Used when no locale matches
   defaultLocale: "en",
   pathnames: {
-    "/blogs": {
-      en: "/blogs",
-      jp: "/ブログ",
-    },
+    ...i18nRouting,
   },
 });
 

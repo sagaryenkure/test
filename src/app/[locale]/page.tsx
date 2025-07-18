@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Product_Page from "./_components/ProductPage";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import LocalSwitcher from "./_components/LocalSwitcher";
 
 const ProductSkeleton = () => {
   return (
@@ -23,6 +24,9 @@ export default async function Home() {
       <div className="mx-auto max-w-4xl text-center">
         <span className="mb-2 block text-sm font-medium text-gray-400">
           {t("homeLink")}
+        </span>
+        <span className="mb-2 block text-sm font-medium text-gray-400">
+          <LocalSwitcher />
         </span>
         <h2 className="mb-4 text-4xl font-bold tracking-tight">{t("title")}</h2>
         <p className="mb-6 text-lg text-gray-300">{t("description")}</p>

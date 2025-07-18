@@ -6,8 +6,8 @@ const wait = (time = 2000) =>
   new Promise((resolve) => setTimeout(resolve, time));
 
 export default async function Product_Page() {
-  const products = await api.post.getProducts({ limit: 10 });
   const t = await getTranslations("listSection");
+  const products = await api.post.getProducts({ limit: 10 });
 
   //   await wait(5000);
   return (
